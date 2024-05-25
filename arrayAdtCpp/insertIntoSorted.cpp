@@ -27,7 +27,7 @@ void onTheLeft(struct Array *array){
 	while(i < j){
 		while(i < array->length && array->A[i] < 0) i++;
 		while(j >= 0 && array->A[j] > 0) j--;
-		swapp(array->A[i],array->A[j]);
+		swapp(&array->A[i],&array->A[j]);
 		i++;
 		j--;
 	}
@@ -64,6 +64,21 @@ int main()
 	insertInSorted(&array,20);
 	Display(array);
 	printf("length of the array is %d\n",array.length);
-	printf("Working...");
+	printf("Working...\n");
+	printf("new function called\n");
+	printf("Initial array \n");
+	Display(array2);
+	printf("changing array\n");
+	onTheLeft(&array2);
+	printf("Final version\n");
+	Display(array2);
 	return 0;
 }
+
+
+
+
+
+
+
+
