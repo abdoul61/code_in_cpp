@@ -15,12 +15,15 @@ public:
 // ***************************
 // Functions
 // ******************
+// swapp function that swapp two element from the same array 
 void swapp(int *x,int *y){
 	int temp;
 	temp = *x;
 	*x = *y;
 	*y = temp;
 }
+// function to swapp all the negatifs element from the right side
+// with the positives elements on the left side.
 void onTheLeft(struct Array *array){
 	int i = 0;
 	int j = array->length -1;
@@ -31,6 +34,17 @@ void onTheLeft(struct Array *array){
 		i++;
 		j--;
 	}
+}
+
+// function to check if an array is sorted
+int isSorted(struct Array array){
+	int i;
+	for(i = 0; i < array.length; i++){
+		if(i+1 < array.length && array.A[i] > array.A[i+1]){
+			return 0;
+		}
+	}
+	return 1;
 }
 void insertInSorted(struct Array *array,int el){
 	//int i = 0;
@@ -63,6 +77,8 @@ int main()
 	Display(array);
 	insertInSorted(&array,20);
 	Display(array);
+	printf("check if array is sorted \n");
+	printf("%d\n",isSorted(array));
 	printf("length of the array is %d\n",array.length);
 	printf("Working...\n");
 	printf("new function called\n");
