@@ -22,14 +22,16 @@ struct Array* Union(struct Array *r1,struct Array *r2){
 			result->A[k++] = r1->A[i++];
 
 			// if r2 element is smaller add him then and increment
-		}else if(r1->A[i] > r2->A[j]){
+		}else if(r2->A[j] < r1->A[i]){
 			result->A[k++] = r2->A[j++];
 			// if there are both the same, then add one of them and increment the other pointer as well
 		}else{
 			result->A[k++] = r2->A[j++];
-			j++;
+			i++;
+
 		}
 	}
+
 	for(;i < r1->length;i++){
 		result->A[k++] = r1->A[i];
 	}
