@@ -70,6 +70,33 @@ struct Array* Intersection(struct Array *r1,struct Array *r2){
 	return result;
 }
 
+// This function is the Difference between two arrays
+struct Array* Difference(struct Array *r1,struct Array *r2){
+	struct Array *result = (struct Array *)malloc(sizeof(struct Array));
+	int i,j,k;
+	i=j=k=0;
+	// Here the idea is the take the difference between both arrays
+	while(i < r1->length && j < r2->length){
+		if(r1->A[i] < r2->A[j]){
+			result->A[k++] = r1->A[i++];
+		}else if(r2->A[j] < r1->A[i]){
+			j++;
+			// if there are both the same, then add one of them and increment the other pointer as well
+		}else{
+			i++;
+			j++;
+
+		}
+	}
+
+	for(;i < r1->length;i++){
+		result->A[k++] = r1->A[i];
+	}
+
+	result->length = k;
+	result->size = 10;
+	return result;
+}
 // function to display
 void Display(struct Array array){
 	for(int i = 0; i < array.length;i++){
@@ -82,6 +109,7 @@ int main(){
 	struct Array r2 = {{3,6,7,15,20},5,10};
 	struct Array *r3;
 	struct Array *r4;
+	struct Array *r5;
 	Display(r);
 	r3 = Union(&r,&r2);
 	printf("The union of r1 and r2 is\n");
@@ -89,6 +117,9 @@ int main(){
 	r4 = Intersection(&r,&r2);
 	printf("The intersection of r1 and r2\n");
 	Display(*r4);
+	r5 = Difference(&r, &r2);
+	printf("The difference between Array 1 and array 2 is \n");
+	Display(*r5);
 	return  0;
 }
 
