@@ -1,7 +1,8 @@
 #include<iostream>
 #include<stdlib.h>
 #include<stdio.h>
-
+// This is the function that can be used with an array as data struture
+// in C++ but most of the code is written in C, a mix of c and c++
 // structure of an array with pointer/array and the size, length
 struct Array {
 	int A[10];
