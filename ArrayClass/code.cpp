@@ -2,40 +2,49 @@
 
 using namespace std;
 
+
+template <class T>
+
 class Array{
 private:
-	int *A;
+	T *A;
 	int size;
 	int length;
 public:
-	// Constructor
+	// Constructors
 	Array(){
-		A = new int[10];
+		A = new T[10];
 		size = 10;
 		length = 0;
 	}
 	Array(int sz){
 		size = sz;
 		length = 0;
-		A = new int[size];
+		A = new T[size];
 	}
+
+	// Destructor
 	~Array()
 	{
 			delete []A;
 	}
+
+	// Class Methods
 	void Display();
-	void Insert(int index,int x);
-	int Delete(int index);
+	void Insert(int index,T x);
+	T Delete(int index);
 };
 
-void Array::Display(){
+template<class T>
+void Array<T>::Display(){
 	for(int i = 0;i < length; i++){
 		std::cout<< A[i] << " ";
 		std::cout<<endl;
 	}
 }
 
-void Array::Insert(int index,int x){
+template<class T>
+void Array<T>::Insert(int index,T x){
 		if(index >= 0  && index <= length){
 			for(int i = length-1;i >= index; i--){
 			A[i+1] = A[i];
@@ -45,8 +54,9 @@ void Array::Insert(int index,int x){
 	length++;
 }
 
-int Array::Delete(int index){
-	int x = 0;
+template<class T>
+T Array<T>::Delete(int index){
+	T x = 0;
 	if(index >= 0 && index < length){
 		x = A[index];
 		for(int i=index; i < length; i++){
@@ -61,13 +71,13 @@ int Array::Delete(int index){
 
 int main(int argc, const char * argv[])
 {
-	Array arr(10);
+	Array<int> arr(10);
 	arr.Insert(0,10);
 	arr.Insert(1,13);
 	arr.Display();
 	arr.Insert(2,11);
 	std::cout<<"New list being displayed"<<std::endl;
-	arr.Delete(1);
+	std::cout<< arr.Delete(1) << "has been deleted "<<endl;
 	arr.Display();
 	return 0;
 }
